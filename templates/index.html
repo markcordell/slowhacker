@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+   <link rel="stylesheet" href=" {{ url_for('static', filename = 'styles.css') }}">
+<title>Slow Hacker</title>
+<div class="header">
+    <h1>Slow Hacker</h1>
+</div>
+{% for i in data %}
+<a href="{{ i[0] }}">
+    <h3>{{ i[1] }}</h3>
+</a>
+{% endfor %}
+</body>
+</html>

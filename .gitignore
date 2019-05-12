@@ -105,3 +105,6 @@ venv.bak/
 
 #ignore vim swp files
 *.swp
+
+#terraform ignore
+.terraform/
