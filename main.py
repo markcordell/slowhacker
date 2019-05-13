@@ -7,7 +7,7 @@ import json
 import boto3
 from flask import Flask
 from flask import render_template
-from jinja2 import Template
+from jinja2 import Environment, FileSystemLoader, select_autoescape, Template
 
 days = 1
 app = Flask(__name__)
@@ -31,15 +31,20 @@ def last_day():
     return articles["hits"]
 
 def main():
+    
     s3 = boto3.resource('s3')
-    template = get_last_day()
+    env = Environment(loader=FileSystemLoader('./templates'))
+    last = last_day()
+    data = []
+    for i in last:
+        data.append([i["url"],i["title"]])
+    template = env.get_template('s3-index.html')
+    body = template.render(data=data)
 
-    s3.Bucket('slowhacker-site').put_object(key='index.html', Body=template)
-
-
+    #upload stuf to s3
+    s3.Bucket('slowhacker-site').put_object(Key='index.html', Body=body, ContentType='text/html')
 
     
-    print(last_day())
 
 
 @app.route("/v1/last-day")

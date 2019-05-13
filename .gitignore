@@ -108,3 +108,6 @@ venv.bak/
 
 #terraform ignore
 .terraform/
+
+#vscode stuff
+.vscode/
