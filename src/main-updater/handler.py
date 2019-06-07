@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import datetime
-import requests
+from botocore.vendored import requests
 import time
 import json
 
@@ -58,4 +58,7 @@ def get_last_day():
 
 
 if __name__ == "__main__":
+    main()
+
+def lambda_handler(event, context):
     main()
