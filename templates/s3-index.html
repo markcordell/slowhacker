@@ -6,10 +6,16 @@
 <div class="header">
     <h1>Slow Hacker</h1>
 </div>
+<div class="subheader">
+    <h4>The best of Hacker News, updated daily at 5pm PDT</h4>
+</div>
+<div class="content">
 {% for i in data %}
-<a href="{{ i[0] }}">
-    <h3>{{ i[1] }}</h3>
-</a>
+    <div class="article">
+        <a href="{{ i[0] }}">{{ i[1] }}</a> 
+        <a herf="{{ i[2] }}">comments</a>
+    </div>
 {% endfor %}
+</div>
 </body>
 </html>

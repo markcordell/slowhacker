@@ -1,13 +1,23 @@
 body {
     background-color: #f6f6ef;
 }
-h1 {
+.header {
     display: flex;
     justify-content: center;
     margin: auto;
 }
-h3 {
+.subheader {
+    margin-left: 2rem;
+}
+.content {
+    margin-left: 2rem;
     display: flex;
-    margin: 1rem;
+    flex-direction: column;
+
+}
+.article {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
     color: black;
 }

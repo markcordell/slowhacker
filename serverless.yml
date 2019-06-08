@@ -30,7 +30,7 @@ provider:
   region: us-west-2
   memorySize: 128
   timeout: 60
-  role: arn:aws:iam::422371343929:role/slowhacker-lambda-dev-us-west-2-lambdaRole
+  role: arn:aws:iam::422371343929:role/slowhacker-role
   stage: production
 
 # you can add statements to the Lambda function's IAM Role here
@@ -75,6 +75,8 @@ functions:
       include: 
         - templates/**
         - src/main-updater/**
+    events:
+      - schedule: cron(0 0 * * ? *)
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events

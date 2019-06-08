@@ -1,7 +1,7 @@
 resource "aws_s3_bucket" "bucket" {
   bucket = "slowhacker-site"
-  acl = "public-read"
-  
+  acl    = "public-read"
+
   policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -24,7 +24,7 @@ EOF
   website {
     index_document = "index.html"
   }
-  
+
   tags = {
     Name = "slowerhacker hosting bucket"
     Env  = "prod"
