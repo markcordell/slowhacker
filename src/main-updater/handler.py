@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import os
 import datetime
 import time
 import json
@@ -10,7 +11,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape, Template
 days = 1
 url = "https://hn.algolia.com/api/v1/search"
 hacker_news_url = "https://news.ycombinator.com"
-bucket = "slowhacker-site"
+bucket = os.environ['S3_BUCKET']
 
 
 def get_articles(timestamp: str):
