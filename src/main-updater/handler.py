@@ -10,6 +10,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape, Template
 days = 1
 url = "https://hn.algolia.com/api/v1/search"
 hacker_news_url = "https://news.ycombinator.com"
+bucket = "slowhacker-site"
 
 
 def get_articles(timestamp: str):
@@ -30,12 +31,13 @@ def main():
     last = last_day()
     data = []
     for i in last:
-        comment = "{url}/item?id={id}".format(url=hacker_news_url, id=i["id"])
+        comment = "{url}/item?id={id}".format(url=hacker_news_url, id=i["objectID"])
         data.append([i["url"],i["title"],comment])
     template = env.get_template('s3-index.html')
-    body = template.render(data=data)
+    body = template.render(data=data, timestamp=datetime.datetime.now().strftime("%m-%d-%Y %I:%M %p"))
+    body
 
-    s3.Bucket('slowhacker-site').put_object(Key='index.html', Body=body, ContentType='text/html')
+    s3.Bucket(bucket).put_object(Key='index.html', Body=body, ContentType='text/html')
 
 if __name__ == "__main__":
     main()

@@ -21,8 +21,14 @@ plugins:
   - serverless-python-requirements
 
 custom:
+  bucket:
+    
   pythonRequirements:
     dockerizePip: true
+  s3Bucket:
+    prod: slowhacker-site
+    dev: slowhacker-site-dev
+
 
 provider:
   name: aws
@@ -31,36 +37,8 @@ provider:
   memorySize: 128
   timeout: 60
   role: arn:aws:iam::422371343929:role/slowhacker-role
-  stage: production
+  stage: ${opt:stage, 'dev'}
 
-# you can add statements to the Lambda function's IAM Role here
-#  iamRoleStatements:
-#    - Effect: "Allow"
-#      Action:
-#        - "s3:ListBucket"
-#      Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "ServerlessDeploymentBucket" } ] ]  }
-#    - Effect: "Allow"
-#      Action:
-#        - "s3:PutObject"
-#      Resource:
-#        Fn::Join:
-#          - ""
-#          - - "arn:aws:s3:::"
-#            - "Ref" : "ServerlessDeploymentBucket"
-#            - "/*"
-
-# you can define service wide environment variables here
-#  environment:
-#    variable1: value1
-
-# you can add packaging information here
-#package:
-#  include:
-#    - include-me.py
-#    - include-me-dir/**
-#  exclude:
-#    - exclude-me.py
-#    - exclude-me-dir/**
 
 package:
   excludeDevDependencies: true
@@ -71,6 +49,8 @@ package:
 functions:
   site-updater:
     handler: src/main-updater/handler.lambda_handler
+    environment:
+      S3_BUCKET: ${self:custom.s3Bucket.${self:provider.stage}}
     package:
       include: 
         - templates/**

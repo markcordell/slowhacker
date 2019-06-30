@@ -13,9 +13,16 @@
 {% for i in data %}
     <div class="article">
         <a href="{{ i[0] }}">{{ i[1] }}</a> 
-        <a herf="{{ i[2] }}">comments</a>
+        <div class="comments">
+            <a href="{{ i[2] }}">comments</a>
+        </div>
     </div>
 {% endfor %}
 </div>
+
+<div class="footer">
+    <h5>Last updated at {{ timestamp }} UTC</h5>
+</div>
+
 </body>
 </html>

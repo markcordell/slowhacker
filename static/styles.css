@@ -1,23 +1,37 @@
 body {
     background-color: #f6f6ef;
 }
+
 .header {
     display: flex;
     justify-content: center;
     margin: auto;
 }
+
 .subheader {
     margin-left: 2rem;
 }
+
 .content {
     margin-left: 2rem;
     display: flex;
     flex-direction: column;
 
 }
+
 .article {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     margin-bottom: 1rem;
     color: black;
+}
+
+.comment {
+    margin-top: 0.25rem;
+    margin-block-end: 0.5rem;
+}
+
+.footer {
+    margin-left: 2rem;
 }

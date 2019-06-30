@@ -30,3 +30,36 @@ EOF
     Env  = "prod"
   }
 }
+
+resource "aws_s3_bucket" "bucket-dev" {
+  bucket = "slowhacker-site-dev"
+  acl    = "public-read"
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+      {
+          "Sid": "PublicReadGetObject",
+          "Effect": "Allow",
+          "Principal": "*",
+          "Action": [
+              "s3:GetObject"
+          ],
+          "Resource": [
+              "arn:aws:s3:::slowhacker-site-dev/*"
+          ]
+      }
+  ]
+}
+EOF
+
+  website {
+    index_document = "index.html"
+  }
+
+  tags = {
+    Name = "slowerhacker hosting bucket dev"
+    Env  = "dev"
+  }
+}
