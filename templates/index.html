@@ -1,15 +1,29 @@
 <!DOCTYPE html>
+<meta charset="UTF-8">
 <html>
 <body>
-   <link rel="stylesheet" href=" {{ url_for('static', filename = 'styles.css') }}">
+   <link rel="stylesheet" href="{{ styles }}">
 <title>Slow Hacker</title>
 <div class="header">
     <h1>Slow Hacker</h1>
 </div>
+<div class="subheader">
+    <h4>The best of Hacker News, updated daily at 5pm PDT</h4>
+</div>
+<div class="content">
 {% for i in data %}
-<a href="{{ i[0] }}">
-    <p>{{ i[1] }}</p>
-</a>
+    <div class="article">
+        <a href="{{ i[0] }}">{{ i[1] }}</a>
+        <div class="comments">
+            <a href="{{ i[2] }}">comments</a>
+        </div>
+    </div>
 {% endfor %}
+</div>
+
+<div class="footer">
+    <h5>Last updated at {{ timestamp }} UTC</h5>
+</div>
+
 </body>
 </html>
