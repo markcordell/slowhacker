@@ -28,7 +28,7 @@ resource "aws_iam_policy" "lambda_s3_policy" {
         "s3:PutObjectAcl"
       ],
       "Effect": "Allow",
-      "Resource": "arn:aws:s3:::slowhacker-site/*"
+      "Resource": "arn:aws:s3:::slowhacker.com/*"
     }
   ]
 }
@@ -90,7 +90,7 @@ resource "aws_iam_policy" "lambda_s3_policy_dev" {
         "s3:PutObjectAcl"
       ],
       "Effect": "Allow",
-      "Resource": "arn:aws:s3:::slowhacker-site-dev/*"
+      "Resource": "arn:aws:s3:::dev.slowhacker.com/*"
     }
   ]
 }

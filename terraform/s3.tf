@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "bucket" {
-  bucket = "slowhacker-site"
+  bucket = "slowhacker.com"
   acl    = "public-read"
 
   policy = <<EOF
@@ -14,7 +14,7 @@ resource "aws_s3_bucket" "bucket" {
               "s3:GetObject"
           ],
           "Resource": [
-              "arn:aws:s3:::slowhacker-site/*"
+              "arn:aws:s3:::slowhacker.com/*"
           ]
       }
   ]
@@ -32,7 +32,7 @@ EOF
 }
 
 resource "aws_s3_bucket" "bucket-dev" {
-  bucket = "slowhacker-site-dev"
+  bucket = "dev.slowhacker.com"
   acl    = "public-read"
 
   policy = <<EOF
@@ -47,7 +47,7 @@ resource "aws_s3_bucket" "bucket-dev" {
               "s3:GetObject"
           ],
           "Resource": [
-              "arn:aws:s3:::slowhacker-site-dev/*"
+              "arn:aws:s3:::dev.slowhacker.com/*"
           ]
       }
   ]
