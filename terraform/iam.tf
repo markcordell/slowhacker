@@ -6,7 +6,7 @@ resource "aws_iam_policy" "lambda_s3_policy" {
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Sid": "slowhackerLambda",
+      "Sid": "slowhackers3",
       "Action": [
         "s3:AbortMultipartUpload",
         "s3:DeleteObject",
@@ -29,6 +29,17 @@ resource "aws_iam_policy" "lambda_s3_policy" {
       ],
       "Effect": "Allow",
       "Resource": "arn:aws:s3:::slowhacker.com/*"
+    },
+    {
+      "Sid": "slowhackersecret",
+      "Effect": "Allow",
+      "Action": [
+          "secretsmanager:GetResourcePolicy",
+          "secretsmanager:GetSecretValue",
+          "secretsmanager:DescribeSecret",
+          "secretsmanager:ListSecrets"
+      ],
+      "Resource": "*"
     }
   ]
 }
@@ -68,7 +79,7 @@ resource "aws_iam_policy" "lambda_s3_policy_dev" {
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Sid": "slowhackerLambda",
+      "Sid": "slowhackers3",
       "Action": [
         "s3:AbortMultipartUpload",
         "s3:DeleteObject",
@@ -91,7 +102,19 @@ resource "aws_iam_policy" "lambda_s3_policy_dev" {
       ],
       "Effect": "Allow",
       "Resource": "arn:aws:s3:::dev.slowhacker.com/*"
+    },
+    {
+      "Sid": "slowhackersecret",
+      "Effect": "Allow",
+      "Action": [
+          "secretsmanager:GetResourcePolicy",
+          "secretsmanager:GetSecretValue",
+          "secretsmanager:DescribeSecret",
+          "secretsmanager:ListSecrets"
+      ],
+      "Resource": "*"
     }
+
   ]
 }
 EOF

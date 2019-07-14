@@ -24,7 +24,7 @@ provider:
   runtime: python3.7
   region: us-west-2
   memorySize: 128
-  timeout: 60
+  timeout: 180
   role: ${self:custom.iamRole.${self:provider.stage}}
   stage: ${opt:stage, 'dev'}
 

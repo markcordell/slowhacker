@@ -7,22 +7,31 @@
 <div class="header">
     <h1>Slow Hacker</h1>
 </div>
-<div class="subheader">
-    <h4>The best of Hacker News, updated daily at 5pm PDT</h4>
-</div>
-<div class="content">
-{% for i in data %}
-    <div class="article">
-        <a href="{{ i[0] }}">{{ i[1] }}</a>
-        <div class="comments">
-            <a href="{{ i[2] }}">comments</a>
-        </div>
+<div class="spacing">
+    <div class="subheader">
+        <h4>The best of Hacker News, updated daily at 5pm PDT</h4>
     </div>
-{% endfor %}
-</div>
+    <div class="content">
+    {% for i in data %}
+        <div class="article">
+            <a href="{{ i[0] }}">{{ i[1] }}</a>
+            <div class="comments">
+                <a href="{{ i[2] }}">comments</a>
+            </div>
+            <div class="summary">
+                {{ i[3] }}
+            </div>
+        </div>
+    {% endfor %}
+    </div>
 
-<div class="footer">
-    <h5>Last updated at {{ timestamp }} UTC</h5>
+    <div class="archives">
+        <a href="{{ previous }}">previous</a>
+    </div>
+
+    <div class="footer">
+        <h5>Last updated at {{ timestamp }} UTC</h5>
+    </div>
 </div>
 
 </body>

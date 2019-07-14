@@ -8,12 +8,11 @@ body {
     margin: auto;
 }
 
-.subheader {
-    margin-left: 2rem;
+.spacing {
+    margin-left: 4rem;
 }
 
 .content {
-    margin-left: 2rem;
     display: flex;
     flex-direction: column;
 
@@ -27,11 +26,6 @@ body {
     color: black;
 }
 
-.comment {
+.comments {
     margin-top: 0.25rem;
-    margin-block-end: 0.5rem;
-}
-
-.footer {
-    margin-left: 2rem;
 }
